@@ -1,12 +1,25 @@
-import React from "react"
+import { useEffect, useState } from "react"
 import "./weatherApp.css"
 import search_icon from "../Assets/search.png"
 import cloud_icon from "../Assets/cloud.png"
-import wind_icon from '../Assets/wind.png'
-import humidity_icon from '../Assets/humidity.png'
+import wind_icon from "../Assets/wind.png"
+import humidity_icon from "../Assets/humidity.png"
 
 function WeatherApp() {
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY
+  const [city, setCity] = useState(null)
+
+  useEffect(() => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "Connected to API")
+        setCity(data.data)
+      })
+      .catch((error) => console.log(error))
+  }, [])
 
   return (
     <div className="container">
