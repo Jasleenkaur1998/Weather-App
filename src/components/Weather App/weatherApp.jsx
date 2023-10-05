@@ -1,11 +1,13 @@
-import React from "react";
-import "./weatherApp.css";
-import search_icon from "../Assets/search.png";
-import cloud_icon from "../Assets/cloud.png";
+import React from "react"
+import "./weatherApp.css"
+import search_icon from "../Assets/search.png"
+import cloud_icon from "../Assets/cloud.png"
 import wind_icon from '../Assets/wind.png'
 import humidity_icon from '../Assets/humidity.png'
 
 function WeatherApp() {
+  const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY
+
   return (
     <div className="container">
       <div className="top-bar">
