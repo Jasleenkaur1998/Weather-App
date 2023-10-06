@@ -8,11 +8,10 @@ function WeatherApp() {
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY
   const [search, setSearch] = useState("")
   const [weatherData, setWeatherData] = useState(null)
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=metric`
 
   const searchPressed = () => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=metric`
-    )
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setWeatherData(data)
